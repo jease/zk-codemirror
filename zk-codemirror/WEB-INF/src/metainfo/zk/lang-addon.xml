@@ -2,7 +2,7 @@
 <language-addon>
 	<addon-name>codemirror</addon-name>
 	<version>		
-		<version-uid>0.9.20101109</version-uid>
+		<version-uid>0.91</version-uid>
 		<zk-version>5.0.0</zk-version>
 	</version>	
 	<language-name>xul/html</language-name>	
