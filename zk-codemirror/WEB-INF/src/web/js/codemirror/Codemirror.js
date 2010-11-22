@@ -67,10 +67,6 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
             parserfile: syntax["js"],
 			readOnly: this._readonly,
 			content: this._value,
-            width: "100%",
-			height: "100%",
-			undoDelay: 50,
-			continuousScanning: 250,
 			onChange: function() { wgt._processChange(); }
 		});
 	},
