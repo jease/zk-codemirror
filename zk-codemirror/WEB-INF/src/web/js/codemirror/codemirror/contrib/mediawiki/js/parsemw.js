@@ -11,13 +11,24 @@
 // 
 // Read the full license at http://www.opensource.org/licenses/gpl-3.0.html
 //
-
+// Code for parsing lists and headlines was added by Maik Jablonski <maik.jablonski@gmail.com>.
+//
 var MWParser = Editor.Parser = (function() {
 	var tokenizeMW = (function() {
 		function normal(source, setState) {
 			var ch = source.next();
 			
-			if (ch == "<" && source.lookAhead("!--", true)) {
+			if (ch == "*" || ch=="-") {
+				// List
+				setState(normal);
+				return "mw-list";
+			} 
+			else if (ch == "=") {
+				// Headline
+				setState(inHeadline);
+				return null;
+			} 
+			else if (ch == "<" && source.lookAhead("!--", true)) {
 				// Comment
 				setState(inComment);
 				return null;
@@ -79,6 +90,14 @@ var MWParser = Editor.Parser = (function() {
 				return "mw-text";
 			}
 		}
+
+		function inHeadline(source, setState) {
+			while (!source.endOfLine()) {
+				source.next();
+			}
+			setState(normal);
+			return "mw-headline";    
+        }
 		
 		function inComment(source, setState) {
 			while (!source.endOfLine()) {
