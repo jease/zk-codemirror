@@ -69,6 +69,11 @@ codemirror.Syntax = {
  "php" : {
 	"js" :		["parsexml.js", "parsecss.js", "tokenizejavascript.js", "parsejavascript.js", "../contrib/php/js/tokenizephp.js", "../contrib/php/js/parsephp.js", "../contrib/php/js/parsephphtmlmixed.js"],
     "css" :	["css/xmlcolors.css", "css/jscolors.css", "css/csscolors.css", "contrib/php/css/phpcolors.css"]  
+ },
+
+ "wiki" : {
+	"js" :	 	["../contrib/mediawiki/js/parsemw.js"],
+	"css" : 	["contrib/mediawiki/css/mwcolors.css"]
  }
- 
+
 };

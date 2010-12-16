@@ -36,6 +36,7 @@
 		<button label="SQL"><attribute name="onClick">setCode("sql");</attribute></button>
 		<button label="PHP"><attribute name="onClick">setCode("php");</attribute></button>
 		<button label="C#"><attribute name="onClick">setCode("cs");</attribute></button>
+		<button label="Wiki"><attribute name="onClick">setCode("wiki");</attribute></button>
 		
 		<separator />
 		
