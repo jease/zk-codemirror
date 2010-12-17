@@ -74,6 +74,11 @@ codemirror.Syntax = {
  "wiki" : {
 	"js" :	 	["../contrib/mediawiki/js/parsemw.js"],
 	"css" : 	["contrib/mediawiki/css/mwcolors.css"]
- }
+ },
+
+ "ftl" : {
+		"js" :	 	["../contrib/freemarker/js/parsefreemarker.js"],
+		"css" : 	["contrib/freemarker/css/freemarkercolors.css"]
+	 }
 
 };

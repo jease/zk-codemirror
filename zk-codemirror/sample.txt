@@ -6,6 +6,7 @@ The ZK-integration and the demo are developed and maintained by Maik Jablonski.
 
 Use the buttons on the bottom of the window to view and **edit** the currently supported languages:
 
+	- Text (txt)
 	- XML (xml)
 	- HTML (html)
 	- CSS (css)
@@ -16,5 +17,6 @@ Use the buttons on the bottom of the window to view and **edit** the currently s
 	- SQL (sql)
 	- PHP (php)
 	- C# (cs)
-	- Text (txt)
+	- Mediawiki (wiki)
+	- Freemarker (ftl)
 	

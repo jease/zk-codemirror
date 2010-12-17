@@ -16,11 +16,9 @@
 var MWParser = Editor.Parser = (function() {
 	var tokenizeMW = (function() {
 		function normal(source, setState) {
-			var ch = source.next();
-			
-			if (ch == "*" || ch=="-") {
+			var ch = source.next();			
+			if (ch == "*" || ch == "-") {
 				// List
-				setState(normal);
 				return "mw-list";
 			} 
 			else if (ch == "=") {

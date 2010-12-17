@@ -48,7 +48,7 @@ function makePartSpan(value) {
   if (value.nodeType == 3) text = value.nodeValue;
   else value = document.createTextNode(text);
 
-  var span = document.createElement("SPAN");
+  var span = document.createElement("span");
   span.isPart = true;
   span.appendChild(value);
   span.currentText = text;
@@ -70,7 +70,7 @@ var webkitLastLineHack = webkit ?
   function(container) {
     var last = container.lastChild;
     if (!last || !last.hackBR) {
-      var br = document.createElement("BR");
+      var br = document.createElement("br");
       br.hackBR = true;
       container.appendChild(br);
     }
@@ -107,7 +107,7 @@ var Editor = (function(){
         if (!leaving && newlineElements.hasOwnProperty(node.nodeName.toUpperCase())) {
           leaving = true;
           if (!atEnd || !top)
-            result.push(document.createElement("BR"));
+            result.push(document.createElement("br"));
         }
       }
     }
@@ -178,7 +178,9 @@ var Editor = (function(){
     // Check whether a node is a normalized <span> element.
     function partNode(node){
       if (node.isPart && node.childNodes.length == 1 && node.firstChild.nodeType == 3) {
-        node.currentText = node.firstChild.nodeValue;
+        var text = node.firstChild.nodeValue;
+        node.dirty = node.dirty || text != node.currentText;
+        node.currentText = text;
         return !/[\n\t\r]/.test(node.currentText);
       }
       return false;
@@ -420,7 +422,8 @@ var Editor = (function(){
         // body of the document to focus it in IE, making focusing
         // hard when the document is small.
         if (internetExplorer && options.height != "dynamic")
-          document.body.style.minHeight = (frameElement.clientHeight - 2 * document.body.offsetTop - 5) + "px";
+          document.body.style.minHeight = (
+            window.frameElement.clientHeight - 2 * document.body.offsetTop - 5) + "px";
 
         document.documentElement.style.borderWidth = "0";
         if (!options.textWrapping)
@@ -650,14 +653,14 @@ var Editor = (function(){
       webkitLastLineHack(this.container);
     },
 
-    cursorCoords: function(start) {
+    cursorCoords: function(start, internal) {
       var sel = select.cursorPos(this.container, start);
       if (!sel) return null;
       var off = sel.offset, node = sel.node, self = this;
       function measureFromNode(node, xOffset) {
         var y = -(document.body.scrollTop || document.documentElement.scrollTop || 0),
             x = -(document.body.scrollLeft || document.documentElement.scrollLeft || 0) + xOffset;
-        forEach([node, window.frameElement], function(n) {
+        forEach([node, internal ? null : window.frameElement], function(n) {
           while (n) {x += n.offsetLeft; y += n.offsetTop;n = n.offsetParent;}
         });
         return {x: x, y: y, yBot: y + node.offsetHeight};
@@ -697,6 +700,12 @@ var Editor = (function(){
       if (this.capturingPaste || window.opera || (gecko && gecko >= 20101026)) return;
       this.capturingPaste = true;
       var te = window.frameElement.CodeMirror.textareaHack;
+      var coords = this.cursorCoords(true, true);
+      te.style.top = coords.y + "px";
+      if (internetExplorer) {
+        var snapshot = select.getBookmark(this.container);
+        if (snapshot) this.selectionSnapshot = snapshot;
+      }
       parent.focus();
       te.value = "";
       te.focus();
@@ -1262,7 +1271,7 @@ var Editor = (function(){
         }, 200);
       }
 
-      var activity = this.options.cursorActivity;
+      var activity = this.options.onCursorActivity;
       if (!safe || activity) {
         var cursor = select.selectionTopNode(this.container, false);
         if (cursor === false || !this.container.firstChild) return;
@@ -1559,6 +1568,7 @@ var Editor = (function(){
 
           // If the part matches the token, we can leave it alone.
           if (correctPart(token, part)){
+            if (active && part.dirty) active(part, token, self);
             part.dirty = false;
             parts.next();
           }
