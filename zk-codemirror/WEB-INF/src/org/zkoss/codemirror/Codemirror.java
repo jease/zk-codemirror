@@ -24,6 +24,7 @@ public class Codemirror extends HtmlBasedComponent {
 
 	private String syntax = "";
 	private String value = "";
+	private String config = "";
 	private boolean readonly = false;
 
 	static {
@@ -39,6 +40,15 @@ public class Codemirror extends HtmlBasedComponent {
 
 	public void setSyntax(String syntax) {
 		this.syntax = syntax != null ? syntax : "";
+		invalidate();
+	}
+
+	public String getConfig() {
+		return config;
+	}
+
+	public void setConfig(String config) {
+		this.config = config != null ? config : "";
 		invalidate();
 	}
 
@@ -75,6 +85,7 @@ public class Codemirror extends HtmlBasedComponent {
 		super.renderProperties(renderer);
 		render(renderer, "readonly", readonly);
 		render(renderer, "syntax", syntax);
+		render(renderer, "config", config);
 		render(renderer, "value", value);
 	}
 

@@ -18,6 +18,7 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 
 	_readonly: false,
 	_syntax: "",
+	_config: "",
 	_value: "",
 	_editor : null,
 	
@@ -29,6 +30,11 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 		
 		syntax: function(v) {
 			this._syntax = v;
+			this.rerender();
+		},
+
+		config: function(v) {
+			this._config = v;
 			this.rerender();
 		},
 
@@ -61,14 +67,22 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 			css[i] = zk.ajaxURI("/web/js/codemirror/codemirror/" + syntax["css"][i], {au : true, ignoreSession : true});
 		}
 		var wgt = this;
-		this._editor = new CodeMirror(CodeMirror.replace(this.uuid + "-codemirror"), {
-			path: zk.ajaxURI("/web/js/codemirror/codemirror/js/", {au : true, ignoreSession : true}),
-			stylesheet: css,
-            parserfile: syntax["js"],
-			readOnly: this._readonly,
-			content: this._value,
-			onChange: function() { wgt._processChange(); }
-		});
+		var defaultConfig = {
+				path: zk.ajaxURI("/web/js/codemirror/codemirror/js/", {au : true, ignoreSession : true}),
+				stylesheet: css,
+	            parserfile: syntax["js"],
+				readOnly: this._readonly,
+				content: this._value,
+				onChange: function() { wgt._processChange(); }
+		};
+		if(this._config) {
+			var customConfig;
+			eval("customConfig = {" + this._config + "}");
+			for (var key in customConfig) {
+				defaultConfig[key] = customConfig[key];
+			}
+		}
+		this._editor = new CodeMirror(CodeMirror.replace(this.uuid + "-codemirror"), defaultConfig);
 	},
 		
 	_processChange: function() {

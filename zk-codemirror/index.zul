@@ -1,9 +1,9 @@
 <zk>
 	<window title="zk-codemirror" border="normal"
-		mode="overlapped" position="center" width="800px" height="600px">
+		mode="overlapped" position="center" width="900px" height="500px">
 
-		<codemirror id="code" width="100%" height="500px" />
-		<textbox id="textbox" multiline="true" width="100%" height="500px" visible="false" />
+		<codemirror id="code" width="100%" height="400px" />
+		<textbox id="textbox" multiline="true" width="100%" height="400px" visible="false" />
 		
 		<zscript>		
 			public String read(String path) {
