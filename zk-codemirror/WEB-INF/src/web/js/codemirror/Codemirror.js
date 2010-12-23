@@ -52,11 +52,21 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 	},
 
 	bind_: function() {
-		this.$supers("bind_", arguments);				
+		this.$supers("bind_", arguments);
+		zWatch.listen({onRestore : this});
 		var wgt = this;
 		setTimeout(function() { wgt._init(); }, 50);
 	},
 			
+	unbind_ : function() {
+       zWatch.unlisten({onRestore : this});
+       this.$supers('unbind_', arguments);
+    },
+   
+    onRestore: function () {
+    	this.rerender();
+    },
+
 	_init: function() {
 		var syntax = codemirror.Syntax[this._syntax];
 		if(!syntax) {
