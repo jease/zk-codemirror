@@ -33,6 +33,7 @@
 		<button label="Java"><attribute name="onClick">setCode("java");</attribute></button>
 		<button label="Groovy"><attribute name="onClick">setCode("groovy");</attribute></button>
 		<button label="Python"><attribute name="onClick">setCode("py");</attribute></button>
+		<button label="Regex"><attribute name="onClick">setCode("regex");</attribute></button>
 		<button label="SQL"><attribute name="onClick">setCode("sql");</attribute></button>
 		<button label="PHP"><attribute name="onClick">setCode("php");</attribute></button>
 		<button label="C#"><attribute name="onClick">setCode("cs");</attribute></button>

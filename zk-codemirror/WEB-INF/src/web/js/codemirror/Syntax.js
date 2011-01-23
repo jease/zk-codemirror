@@ -79,6 +79,11 @@ codemirror.Syntax = {
  "ftl" : {
 		"js" :	 	["../contrib/freemarker/js/parsefreemarker.js"],
 		"css" : 	["contrib/freemarker/css/freemarkercolors.css"]
-	 }
+ },
+	 
+ "regex" : {
+		"js" :	 	["../contrib/regex/js/parseregex.js"],
+		"css" : 	["contrib/regex/css/regexcolors.css"]	 
+ }
 
 };

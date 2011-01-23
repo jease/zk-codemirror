@@ -1,0 +1,4 @@
+(?ix)/some(group)and more(?:unnumbered)and(?=sth)but(?!not)
+(\k<named_$>b.ckref) (?#a comment) # some space
+fdd[^]aa[]ddf[\45-\55\67]sfa[\ca-\cb\cd]sdf\cdf\p{No}ddf[\a-\q]dffd[\u0033-\u0640\u0747]+?f*?df[\034-\038\u039]d
+[\xaf-\xbf]fdfe{1}dfsd{2,3}--fakj{3,}f[^ab]df\39d[^a-ze-]a076df[\u00a0-\u00f0][\u0010\49\077\xaf]ffa[--q]ds[*--]ad[-ad\qfw]fd\qad\p{^a}fdf\P{a}a[ab-cd]\x11\u0123\ca\34df/gi
