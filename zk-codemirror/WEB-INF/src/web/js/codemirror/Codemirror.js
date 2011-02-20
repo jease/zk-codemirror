@@ -83,7 +83,8 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 	            parserfile: syntax["js"],
 				readOnly: this._readonly,
 				content: this._value,
-				onChange: function() { wgt._processChange(); }
+				onChange: function() { wgt._processChange(); },
+				onCursorActivity: function() { wgt._processChange(); }
 		};
 		if(this._config) {
 			var customConfig;

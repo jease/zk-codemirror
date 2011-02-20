@@ -1,6 +1,6 @@
 window.CodeMirrorConfig = {
     width: "",
     height: "100%",
-    undoDelay : 50,
+    undoDelay : 250,
     continuousScanning : 250
 }
