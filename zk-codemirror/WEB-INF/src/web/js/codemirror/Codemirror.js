@@ -41,7 +41,7 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 		value: function(v) {
 			this._value = v;			
 			this.rerender();
-		},
+		}
 	},
 	
 	getZclass: function () {
