@@ -51,6 +51,10 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
 		return "z-codemirror" + (this._readonly ? " z-codemirror-readonly" : "");
 	},
 
+    getEditor: function() {
+    	return this._editor;
+    },
+
 	bind_: function() {
 		this.$supers("bind_", arguments);
 		zWatch.listen({onRestore : this});
@@ -66,7 +70,7 @@ codemirror.Codemirror = zk.$extends(zul.Widget, {
     onRestore: function () {
     	this.rerender();
     },
-
+    
 	_init: function() {
 		var syntax = codemirror.Syntax[this._syntax];
 		if(!syntax) {
