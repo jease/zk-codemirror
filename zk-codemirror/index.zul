@@ -1,4 +1,6 @@
 <zk>
+	<a label="Visit Google Project Homepage" href="http://code.google.com/p/zk-codemirror/" />
+	
 	<window title="zk-codemirror" border="normal"
 		mode="overlapped" position="center" width="900px" height="500px">
 
