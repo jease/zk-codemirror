@@ -58,6 +58,12 @@
 			</attribute>
 		</button>
 
+		<checkbox label="Line Numbers">
+			<attribute name="onCheck">
+				code.setConfig("lineNumbers:" + event.getTarget().isChecked());
+			</attribute>
+		</checkbox>
+
 		<checkbox label="Readonly">
 			<attribute name="onCheck">
 				code.setReadonly(!code.isReadonly());
