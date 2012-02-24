@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language-addon>
+	<addon-name>codemirror</addon-name>
+	<version>		
+		<version-uid>1.0.1</version-uid>
+		<zk-version>5.0.0</zk-version>
+	</version>	
+	<language-name>xul/html</language-name>	
+	<component>
+		<component-name>codemirror</component-name>
+		<component-class>org.zkoss.codemirror.Codemirror</component-class>
+		<widget-class>codemirror.Codemirror</widget-class>
+		<mold>
+			<mold-name>default</mold-name>
+			<mold-uri>mold/codemirror.js</mold-uri>
+			<css-uri>css/codemirror.css</css-uri>
+		</mold>		
+	</component>
+</language-addon>

@@ -1,0 +1,6 @@
+<package name="codemirror" language="xul/html" depends="zul">
+	<script src="CodeMirrorConfig.js"/>
+	<script src="Syntax.js"/>
+	<script src="codemirror/js/codemirror.js"/>	
+	<widget name="Codemirror"/>	
+</package>

@@ -1,0 +1,19 @@
+.z-codemirror {
+	border: 1px solid #86A4BE;	
+}
+
+.z-codemirror-readonly {
+	background: #ECEAE4;
+}
+
+.CodeMirror-line-numbers {
+  background-color: #EEEEEE;
+  color: #AAAAAA;
+  font-family: monospace;
+  font-size: 10pt;
+  line-height: normal;
+  padding-right: 0.3em;
+  padding-top: 0.4em;
+  text-align: right;
+  width: 2.2em;
+}

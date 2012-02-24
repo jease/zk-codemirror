@@ -1,0 +1,31 @@
+<!--
+  MediaWiki syntax coloring parser test
+-->
+
+== Mediawiki for Codemirror ==
+
+The wikitext used to edit [http://www.mediawiki.org MediaWiki] pages is hard for beginners to learn. Often, the internal (source) layout of a page so cluttered it's hard to see what's going on with a single glance.
+
+'''''Syntax highlighting''''' can help (see also the picture [[File:Java keywords highlighted.png]]).
+
+This basic MediaWiki ''parser'' colors MW syntax (aka [[w:Wikitext|"wikitext"]]), highlighting certain parts of the code for easier readability.
+
+But it can do more: The parser also visually indicates broken code, such as this [[improperly closed link].
+
+=== Example for list ===
+
+* This is the first item
+* This is the second item
+* This is the third item
+
+It also makes the following example table, taken from [[mw:Help:Tables]], stand out from the rest of the code, making it easier to see:
+
+{|
+|  Orange    ||   Apple   ||   more
+|-
+|   Bread    ||   Pie     ||   more
+|-
+|   Butter   || Ice cream ||  and more
+|}
+
+Syntax highlighting is the next best thing to [[w:WYSIWIG|WYSIWIG]]!

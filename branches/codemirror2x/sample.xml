@@ -1,0 +1,97 @@
+<grid fixedLayout="true">
+    <columns>
+        <column label="Type" width="150px" />
+        <column label="Content" />
+    </columns>
+    <rows>
+        <row>
+            <label value="UserName" width="150px" />
+            <textbox value="Darth" width="150px" />
+        </row>
+        <row>
+            Password
+            <textbox type="password" value="123456789" width="150px" />
+        </row>
+        <row>
+            Re-type Password
+            <textbox type="password" value="123456789" width="150px" />
+        </row>
+        <row>
+            Age:
+            <intbox value="19" constraint="no negative,no zero" width="150px" />
+        </row>
+        <row>
+            Phone:
+            <intbox constraint="no negative,no zero" width="150px" value="12345678" />
+        </row>
+        <row>
+            Weight:
+            <decimalbox format="###.##" value="154.32" width="150px" />
+        </row>
+        <row>
+            Birthday:
+            <hbox>
+                <datebox id="db" width="150px" />
+                <listbox rows="1" onSelect="db.setFormat(self.selectedItem.value)" mold="select">
+                    <listitem label="Default" value="" />
+                    <listitem label="yyyy/MM/dd hh:mm a" value="yyyy/MM/dd hh:mm a" />
+                    <listitem label="yyyy/MM/dd" value="yyyy/MM/dd" />
+                    <listitem label="MM-dd-yy" value="MM-dd-yy" />
+                </listbox>
+            </hbox>
+        </row>
+        <row>
+            Address
+            <vbox>
+                <textbox width="250px" value="123 W. 45 Street, New York, NY 10001" />
+                <hbox>
+                    <label value="Zip code :" />
+                    <intbox constraint="no negative,no zero" width="150px" />
+                </hbox>
+            </vbox>
+        </row>
+        <row>
+            E-mail:
+            <textbox width="150px" value="zk@zkoss.org"
+                constraint="/.+@.+\.[a-z]+/: Please enter an e-mail address" />
+        </row>
+        <row>
+            Memo:
+            <hbox>
+                <textbox id="intro" rows="3" width="250px">
+                    <attribute name="value">Use ZK for the view tier</attribute>
+                </textbox>
+                <vbox>
+                    Adjust Height:
+                    <spinner value="3" constraint="no negative,no zero">
+                        <attribute name="onChanging"><![CDATA[
+                            if (event.value.length() > 0 && Integer.parseInt(event.value) > 0) 
+                                intro.rows = Integer.parseInt(event.value);
+                        ]]></attribute>
+                    </spinner>
+                </vbox>
+            </hbox>
+        </row>
+        <row>
+            Validation
+            <vlayout>
+                <hlayout>
+                    <captcha id="cpa" length="6" width="150px" height="50px" />
+                    <vlayout>
+                        <button label="Regenerate" onClick='cpa.randomValue(); captchaInput.value=""' />
+                        <hlayout>
+                            Background-Color:
+                            <colorbox color="#FFFFFF" onChange="cpa.setBgColor(self.color); cpa.randomValue();" />
+                        </hlayout>
+                    </vlayout>
+                </hlayout>
+                <hlayout>
+                    <textbox id="captchaInput" width="150px"
+                        onChange='captchaResult.value = cpa.value.equalsIgnoreCase(self.value) ? "OK": "Wrong"'/>
+                    <label id="captchaResult"/>
+                    (Case Insensitive)
+                </hlayout>
+            </vlayout>
+        </row>
+    </rows>
+</grid>

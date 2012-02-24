@@ -1,0 +1,23 @@
+"CodeMirror is a JavaScript library that can be used to create a relatively pleasant editor interface for code-like content - computer programs, HTML markup, and similar. If a parser has been written for the language you are editing (see below for a list of supported languages), the code will be coloured, and the editor will help you with indentation."
+	(Marijn Haverbeke about CodeMirror on http://codemirror.net)
+
+This demo shows the integration of CodeMirror for the ZK-Webframework (http://zkoss.org). 
+The ZK-integration and the demo are developed and maintained by Maik Jablonski.
+
+Use the buttons on the bottom of the window to view and **edit** the currently supported languages:
+
+	- Text (txt)
+	- XML (xml)
+	- HTML (html)
+	- CSS (css)
+	- Javascript (js)
+	- Java (java)
+	- Groovy (groovy)
+	- Python (py)
+	- SQL (sql)
+	- PHP (php)
+	- C# (cs)
+	- Mediawiki (wiki)
+	- Freemarker (ftl)
+	- Regular Expressions (regex)
+	

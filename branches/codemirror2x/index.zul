@@ -1,0 +1,74 @@
+<zk>
+	<a label="Visit Google Project Homepage" href="http://code.google.com/p/zk-codemirror/" />
+	
+	<window title="zk-codemirror" border="normal"
+		mode="overlapped" position="center" width="900px" height="500px">
+
+		<codemirror id="code" width="100%" height="400px" />
+		<textbox id="textbox" multiline="true" width="100%" height="400px" visible="false" />
+		
+		<zscript>		
+			public String read(String path) {
+				String realpath = Executions.getCurrent().getDesktop()
+						.getWebApp().getRealPath(path); 	
+				java.io.Reader reader = new java.io.FileReader(realpath);
+				String result = new String(org.zkoss.io.Files.readAll(reader));
+				reader.close();
+				return result;
+			}
+			
+			public void setCode(String syntax) {
+				String value = read("/sample." + syntax);
+				code.setSyntax(syntax);
+				code.setValue(value);
+				textbox.setValue(value);					
+			}
+		</zscript>
+					
+		<zscript>setCode("txt");</zscript>
+						
+		<button label="Text"><attribute name="onClick">setCode("txt");</attribute></button>
+		<button label="XML"><attribute name="onClick">setCode("xml");</attribute></button>
+		<button label="HTML"><attribute name="onClick">setCode("html");</attribute></button>
+		<button label="CSS"><attribute name="onClick">setCode("css");</attribute></button>
+		<button label="Javascript"><attribute name="onClick">setCode("js");</attribute></button>
+		<button label="Java"><attribute name="onClick">setCode("java");</attribute></button>
+		<button label="Groovy"><attribute name="onClick">setCode("groovy");</attribute></button>
+		<button label="Python"><attribute name="onClick">setCode("py");</attribute></button>
+		<button label="Regex"><attribute name="onClick">setCode("regex");</attribute></button>
+		<button label="SQL"><attribute name="onClick">setCode("sql");</attribute></button>
+		<button label="PHP"><attribute name="onClick">setCode("php");</attribute></button>
+		<button label="C#"><attribute name="onClick">setCode("cs");</attribute></button>
+		<button label="Mediawiki"><attribute name="onClick">setCode("wiki");</attribute></button>
+		<button label="Freemarker"><attribute name="onClick">setCode("ftl");</attribute></button>
+		
+		<separator />
+		
+		<button label="Swap between Textbox and Codemirror">
+			<attribute name="onClick">
+				if(code.isVisible()) {
+					textbox.setValue(code.getValue());
+					textbox.setVisible(true);
+					code.setVisible(false);
+				} else {
+					code.setValue(textbox.getValue());
+					code.setVisible(true);
+					textbox.setVisible(false);				
+				}
+			</attribute>
+		</button>
+
+		<checkbox label="Line Numbers">
+			<attribute name="onCheck">
+				code.setConfig("lineNumbers:" + event.getTarget().isChecked());
+			</attribute>
+		</checkbox>
+
+		<checkbox label="Readonly">
+			<attribute name="onCheck">
+				code.setReadonly(!code.isReadonly());
+				textbox.setReadonly(!textbox.isReadonly());
+			</attribute>
+		</checkbox>
+	</window>
+</zk>
